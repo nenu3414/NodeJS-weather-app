@@ -16,17 +16,15 @@ weatherForm.addEventListener("submit", (e) => {
   message2.textContent = "";
 
   //Fetch data from API
-  fetch(`http://localhost:3000/weather?address=${location}`).then(
-    (response) => {
-      response.json().then((data) => {
-        if (data.error) {
-          message1.textContent = data.error;
-          message2.textContent = "";
-        } else {
-          message1.textContent = data.location;
-          message2.textContent = data.forecast;
-        }
-      });
-    }
-  );
+  fetch(`/weather?address=${location}`).then((response) => {
+    response.json().then((data) => {
+      if (data.error) {
+        message1.textContent = data.error;
+        message2.textContent = "";
+      } else {
+        message1.textContent = data.location;
+        message2.textContent = data.forecast;
+      }
+    });
+  });
 });
